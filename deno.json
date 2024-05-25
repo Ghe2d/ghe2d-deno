@@ -1,0 +1,6 @@
+{
+    "exports": "./mod.ts",
+    "tasks": {
+        "build": "cargo build native/Cargo.toml -r"
+    }
+}

@@ -1,5 +1,6 @@
 import { existsSync } from "https://deno.land/std@0.224.0/fs/mod.ts";
 import { __dirname } from "./utilty.ts";
+import { dlopen } from "jsr:@denosaurs/plug";
 
 let libSuffix = "";
 switch (Deno.build.os) {
@@ -14,16 +15,28 @@ switch (Deno.build.os) {
     break;
 }
 
+const getOSTempDir = () => Deno.env.get('TMPDIR') || Deno.env.get('TMP') || Deno.env.get('TEMP') || '/tmp';
+console.log(getOSTempDir());
 
+const ff = Deno.makeTempDirSync({prefix: "ghe2d"});
 
-const path = `${__dirname()}/../native/target/release/ghe2d.${libSuffix}`;
+console.log(ff);
+
+// const path = `${__dirname()}/../native/target/release/ghe2d.${libSuffix}`;
+
+const path = new URL(
+    `../native/target/release/ghe2d.${libSuffix}`,
+    import.meta.url
+)
 
 if(!existsSync(path)) {
     const command = new Deno.Command("cargo", {
         args: [
             "build",
             `--manifest-path=${__dirname()}/../native/Cargo.toml`,
-            "-r"
+            "-r",
+            "--target-dir",
+            "."
         ]
     });
     
@@ -32,7 +45,7 @@ if(!existsSync(path)) {
 
 // 
 
-export const lib = Deno.dlopen(path, {
+export const lib = await dlopen(path, {
     create_img: {
         parameters: ["i32", "i32"],
         result: "pointer"
