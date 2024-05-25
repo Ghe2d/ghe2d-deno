@@ -5,7 +5,11 @@ import { Font } from "./text_manager/font.ts";
 
 export function __dirname() {
     console.log(import.meta.url)
+    console.log(path.dirname("."))
     console.log(path.fromFileUrl(import.meta.url))
+    console.log(Deno.cwd())
+    const url = new URL("../native/1.rs", import.meta.url);
+    console.log(url);
     return path.dirname(path.fromFileUrl(import.meta.url));
 }
 
