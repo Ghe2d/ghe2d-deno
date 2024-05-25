@@ -1,9 +1,11 @@
-import * as path from "https://deno.land/std@0.197.0/path/mod.ts";
+import * as path from "https://deno.land/std@0.224.0/path/mod.ts";
 
 import { CircleReturn, TextReturn, Ghe2dReturn, CircleOptions, TextOptions, Color, ImageOptions, ImageReturn, Rgba } from "./types.ts";
 import { Font } from "./text_manager/font.ts";
 
 export function __dirname() {
+    console.log(import.meta.url)
+    console.log(path.fromFileUrl(import.meta.url))
     return path.dirname(path.fromFileUrl(import.meta.url));
 }
 
