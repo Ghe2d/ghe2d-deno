@@ -15,6 +15,11 @@ switch (Deno.build.os) {
     break;
 }
 
+// chack in temp
+// mkdir into temp
+// download into temp
+// 
+
 const getOSTempDir = () => Deno.env.get('TMPDIR') || Deno.env.get('TMP') || Deno.env.get('TEMP') || '/tmp';
 console.log(getOSTempDir());
 
@@ -29,19 +34,28 @@ const path = new URL(
     import.meta.url
 )
 
-if(!existsSync(path)) {
-    const command = new Deno.Command("cargo", {
-        args: [
-            "build",
-            `--manifest-path=${__dirname()}/../native/Cargo.toml`,
-            "-r",
-            "--target-dir",
-            "."
-        ]
-    });
+const command = new Deno.Command("deno", {
+    args: [
+        "task",
+        "build"
+    ]
+});
+
+await command.spawn().status;
+
+// if(!existsSync(path)) {
+//     const command = new Deno.Command("cargo", {
+//         args: [
+//             "build",
+//             `--manifest-path=${__dirname()}/../native/Cargo.toml`,
+//             "-r",
+//             "--target-dir",
+//             "."
+//         ]
+//     });
     
-    await command.spawn().status;
-}
+//     await command.spawn().status;
+// }
 
 // 
 
