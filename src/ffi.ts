@@ -11,6 +11,10 @@ export const lib = Deno.dlopen(ffi_path, {
             struct: ["pointer", "isize"]
         }
     },
+    save: {
+        parameters: ["pointer", "buffer", "usize"],
+        result: "void"
+    },
     draw_circle: {
         parameters: ["pointer", "f32", "f32", "f32", "f32", "f32", {struct : ["u8", "u8", "u8", "u8"]}],
         result: "void"

@@ -4,6 +4,7 @@ import { createCircle } from "./src/shapes/circle.ts";
 import { createRect } from "./src/shapes/rect.ts";
 import { createText } from "./src/text_manager/text.ts";
 import { CircleOptions, ImageOptions, RectOptions, TextOptions } from "./src/types.ts";
+import { encode, get_buffer } from "./src/utilty.ts";
 
 export class Ghe2d {
     private img: Deno.PointerValue<unknown>;
@@ -25,6 +26,15 @@ export class Ghe2d {
 
     createImage(options: ImageOptions) {
         return createImage(this.img, options)
+    }
+
+    toBuffer() {
+        return get_buffer(lib.symbols.buffer(this.img))
+    }
+
+    save(path: string) {
+        const buffer_path = encode(path);
+        lib.symbols.save(this.img, buffer_path, buffer_path.length);
     }
 }
 

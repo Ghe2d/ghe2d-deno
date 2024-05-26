@@ -142,3 +142,15 @@ export function rgba_to_buffer(rgba: Rgba) {
     }
     return buffer;
 }
+
+export function get_buffer(buffer: Uint8Array): Uint8Array {
+    const view = new DataView(buffer.buffer);
+    const dataPointer = view.getBigInt64(0, true);
+    const dataSize = view.getBigInt64(8, true)
+    const unsafePointer = Deno.UnsafePointer.create(dataPointer) as Deno.PointerObject<unknown>;
+    const dataView = new Deno.UnsafePointerView(unsafePointer);
+    const data = new Uint8Array(Number(dataSize));
+    dataView.copyInto(data);
+
+    return new Uint8Array(dataView.getArrayBuffer(Number(dataSize)));
+}
