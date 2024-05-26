@@ -1,4 +1,4 @@
-import { Ghe2d } from "https://deno.land/x/ghe2d@v0.0.8-alpha/mod.ts";
+import { Ghe2d } from "https://deno.land/x/ghe2d@v0.0.9-alpha/mod.ts";
 
 // import { Ghe2d } from "../mod.ts";
 

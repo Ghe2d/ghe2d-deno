@@ -2,7 +2,7 @@ import { existsSync } from "https://deno.land/std@0.224.0/fs/exists.ts";
 import { decompress } from "https://deno.land/x/zip@v1.2.5/decompress.ts";
 
 import deno from "../deno.json" with { type: "json" };
-import native from "../deno.json" with { type: "json" };
+import native from "../native.json" with { type: "json" };
 
 
 export let getOSTempDir = Deno.env.get('TMPDIR') || Deno.env.get('TMP') || Deno.env.get('TEMP') || '/tmp';

@@ -4,6 +4,6 @@
     "tasks": {
         "test": "deno run -A --unstable-ffi ./test/test.ts"
     },
-    "version": "v0.0.8-alpha",
+    "version": "v0.0.9-alpha",
     "exclude": ["test"]
 }
