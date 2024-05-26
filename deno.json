@@ -2,12 +2,8 @@
     "github": "https://github.com/Ghe2d/ghe2d-deno",
     "exports": "./mod.ts",
     "tasks": {
-        "build": "cargo build --manifest-path=native/Cargo.toml -r",
         "test": "deno run -A --unstable-ffi ./test/test.ts"
     },
-    "version": "v0.0.7-alpha",
-    "exclude": ["fonts", "native", "test"],
-    "fmt": {
-        "exclude": ["fonts", "native"]
-      }
+    "version": "v0.0.8-alpha",
+    "exclude": ["test"]
 }

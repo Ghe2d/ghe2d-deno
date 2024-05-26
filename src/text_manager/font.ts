@@ -1,5 +1,6 @@
 import { lib } from "../ffi.ts";
-import { __dirname, encode } from "../utilty.ts";
+import { ghe2dTempPathFontsDir } from "../temp.ts";
+import { encode } from "../utilty.ts";
 
 export class Font {
     public data: unknown
@@ -12,11 +13,11 @@ export class Font {
 }
 
 export const defaultFonts = {
-    Almarai: new Font(`${__dirname()}/../fonts/Almarai-Regular.ttf`),
-    Cairo: new Font(`${__dirname()}/../fonts/Cairo-Regular.ttf`),
-    NotoSans: new Font(`${__dirname()}/../fonts/NotoSans-Regular.ttf`),
-    Rubik: new Font(`${__dirname()}/../fonts/Rubik-Regular.ttf`),
-    Ruwudu: new Font(`${__dirname()}/../fonts/Ruwudu-Regular.ttf`),
-    Tajawal: new Font(`${__dirname()}/../fonts/Tajawal-Regular.ttf`),
+    Almarai: new Font(`${ghe2dTempPathFontsDir}/Almarai-Regular.ttf`),
+    Cairo: new Font(`${ghe2dTempPathFontsDir}/Cairo-Regular.ttf`),
+    NotoSans: new Font(`${ghe2dTempPathFontsDir}/NotoSans-Regular.ttf`),
+    Rubik: new Font(`${ghe2dTempPathFontsDir}/Rubik-Regular.ttf`),
+    Ruwudu: new Font(`${ghe2dTempPathFontsDir}/Ruwudu-Regular.ttf`),
+    Tajawal: new Font(`${ghe2dTempPathFontsDir}/Tajawal-Regular.ttf`),
 }
 
