@@ -27,7 +27,6 @@ switch (Deno.build.os) {
 // ? dir ver@name-deno-rs
 
 let getOSTempDir = Deno.env.get('TMPDIR') || Deno.env.get('TMP') || Deno.env.get('TEMP') || '/tmp';
-console.log(getOSTempDir);
 
 if(!existsSync(getOSTempDir)) {
     if(existsSync("./.temp")) Deno.mkdirSync("./.temp");
@@ -61,7 +60,7 @@ if(!existsSync(path)) {
     const command = new Deno.Command("cargo", {
         args: [
             "build",
-            `--manifest-path${ghe2dTempPathNativeDir}/Cargo.toml`,
+            `--manifest-path=${ghe2dTempPathNativeDir}/Cargo.toml`,
             "-r"
         ]
     });
